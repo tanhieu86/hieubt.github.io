@@ -11,6 +11,7 @@
       font-family: 'Comic Sans MS', 'Courier New', cursive;
       padding: 50px;
       color: #ff69b4;
+      overflow: hidden;
     }
     
     .cute-hacker-title {
@@ -60,6 +61,9 @@
       pointer-events: none;
       z-index: -1;
       opacity: 0.3;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
     }
 
     .sparkle {
@@ -76,18 +80,22 @@
       100% { transform: scale(3); opacity: 0; }
     }
 
-    /* Thêm hiệu ứng pulse cho thông báo */
     @keyframes pulse {
       0% { transform: scale(1); }
       50% { transform: scale(1.1); }
       100% { transform: scale(1); }
+    }
+
+    /* Hiệu ứng neon cho thông báo */
+    .message-neon {
+      text-shadow: 0 0 5px #fff, 0 0 10px #ff69b4, 0 0 20px #ff69b4, 0 0 30px #ff69b4, 0 0 40px #ff69b4, 0 0 50px #ff69b4;
     }
   </style>
 </head>
 <body>
   <h1 class="cute-hacker-title glitch-effect">🌸 Chào mừng NP đến Hack World dễ thương 🌸</h1>
   <button class="kawaii-button" onclick="showCuteHack(event)">
-    Nhấn vào đây nè 💖
+    Nhấn vào đây nè c 💖
   </button>
 
   <script>
@@ -105,7 +113,7 @@
       document.body.appendChild(flash);
       setTimeout(() => flash.remove(), 300);
 
-      // Tạo hiệu ứng sparkle (tăng số lượng từ 20 lên 50)
+      // Tạo hiệu ứng sparkle (50 cái)
       for (let i = 0; i < 50; i++) {
         const sparkle = document.createElement('div');
         sparkle.className = 'sparkle';
@@ -115,47 +123,45 @@
         setTimeout(() => sparkle.remove(), 1000);
       }
 
-      // Tạo matrix dễ thương (tăng số lượng ký tự rơi từ 30 lên 50)
-      const matrix = document.createElement('div');
-      matrix.className = 'cute-matrix';
+      // Nếu chưa có matrix, tạo hiệu ứng ký tự rơi liên tục
+      if (!document.querySelector('.cute-matrix')) {
+        const matrix = document.createElement('div');
+        matrix.className = 'cute-matrix';
+        const chars = "❤️💖🌸🐰🎀✨💫🐾";
+        for (let i = 0; i < 50; i++) {
+          const text = document.createElement('div');
+          text.style.position = 'fixed';
+          text.style.left = Math.random() * 95 + 'vw';
+          text.style.animation = `fall ${Math.random() * 3 + 2}s linear infinite`;
+          text.style.fontSize = '20px';
 
-      // Tạo ký tự rơi
-      const chars = "❤️💖🌸🐰🎀✨💫🐾";
-      for (let i = 0; i < 50; i++) {
-        const text = document.createElement('div');
-        text.style.position = 'fixed';
-        text.style.left = Math.random() * 95 + 'vw';
-        text.style.animation = `fall ${Math.random() * 3 + 2}s linear infinite`;
-        text.style.fontSize = '20px';
-
-        let content = '';
-        for (let j = 0; j < 10; j++) {
-          content += chars[Math.floor(Math.random() * chars.length)] + ' ';
+          let content = '';
+          for (let j = 0; j < 10; j++) {
+            content += chars[Math.floor(Math.random() * chars.length)] + ' ';
+          }
+          text.innerHTML = content;
+          matrix.appendChild(text);
         }
-        text.innerHTML = content;
-
-        matrix.appendChild(text);
+        document.body.appendChild(matrix);
       }
-      document.body.appendChild(matrix);
 
-      // Hiển thị thông báo với nội dung mới và hiệu ứng pulse
-      const message = document.createElement('div');
-      message.style.position = 'fixed';
-      message.style.top = '50%';
-      message.style.left = '50%';
-      message.style.transform = 'translate(-50%, -50%)';
-      message.style.background = 'pink';
-      message.style.padding = '20px';
-      message.style.borderRadius = '15px';
-      message.style.boxShadow = '0 0 20px white';
-      message.style.animation = 'pulse 1s infinite';
-      message.innerHTML = '🎀 Oops! Tất cả tài khoản trên máy c np cute đã bị lấy hacked by tanhieubui';
-
-      document.body.appendChild(message);
-      setTimeout(() => {
-        matrix.remove();
-        message.remove();
-      }, 3000);
+      // Nếu thông báo chưa tồn tại, tạo mới và giữ lại mãi mãi
+      if (!document.querySelector('.cute-message')) {
+        const message = document.createElement('div');
+        message.className = 'cute-message message-neon';
+        message.style.position = 'fixed';
+        message.style.top = '50%';
+        message.style.left = '50%';
+        message.style.transform = 'translate(-50%, -50%)';
+        message.style.background = 'pink';
+        message.style.padding = '20px 40px';
+        message.style.borderRadius = '15px';
+        message.style.boxShadow = '0 0 20px white';
+        message.style.animation = 'pulse 1s infinite';
+        message.style.zIndex = 200;
+        message.innerHTML = '🎀 Oops! Tất cả tài khoản trên máy c np cute đã bị lấy hacked by tanhieubui';
+        document.body.appendChild(message);
+      }
     }
 
     // Thêm animation cho hiệu ứng rơi
