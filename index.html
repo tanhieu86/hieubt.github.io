@@ -3,88 +3,146 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Web Hacker Hihi</title>
+    <title>Hacker Cute Hí hí</title>
     <style>
         body {
-            background: linear-gradient(135deg, #2b2b2b, #1a1a1a);
+            background: linear-gradient(135deg, #ffb3ba, #ffdfba);
             text-align: center;
-            font-family: 'Courier New', monospace;
+            font-family: 'Comic Sans MS', 'Courier New', cursive;
             padding: 50px;
-            color: #0f0;
+            color: #ff69b4;
         }
-        .hacker-button {
-            background: #00ff00;
+        
+        .cute-hacker-title {
+            text-shadow: 2px 2px #ffffff;
+            font-size: 2.5em;
+            margin-bottom: 30px;
+        }
+
+        .kawaii-button {
+            background: #ff94c2;
             border: none;
-            padding: 15px 30px;
-            font-size: 20px;
-            border-radius: 5px;
+            padding: 20px 40px;
+            font-size: 24px;
+            border-radius: 15px;
             cursor: pointer;
             transition: 0.3s;
             position: relative;
-            box-shadow: 0 0 10px #0f0;
-            color: #000;
-            font-weight: bold;
+            box-shadow: 0 4px 15px rgba(255, 105, 180, 0.3);
+            color: white;
+            border: 3px solid white;
         }
-        .hacker-button:hover {
-            background: #ff0000;
-            box-shadow: 0 0 20px #f00;
-            transform: scale(1.1);
+
+        .kawaii-button:hover {
+            background: #ff6b6b;
+            transform: scale(1.05) rotate(-3deg);
+            box-shadow: 0 6px 20px rgba(255, 105, 180, 0.5);
         }
-        .matrix-effect {
+
+        .glitch-effect {
+            animation: glitch 1s infinite;
+            text-shadow: 2px 2px #ff94c2, -2px -2px #b2ffff;
+        }
+
+        @keyframes glitch {
+            0% { transform: translate(0); }
+            20% { transform: translate(-2px, 2px); }
+            40% { transform: translate(-2px, -2px); }
+            60% { transform: translate(2px, 2px); }
+            80% { transform: translate(2px, -2px); }
+            100% { transform: translate(0); }
+        }
+
+        .cute-matrix {
             position: fixed;
             top: 0;
             left: 0;
             pointer-events: none;
             z-index: -1;
+            opacity: 0.3;
+        }
+
+        .sparkle {
+            position: absolute;
+            width: 8px;
+            height: 8px;
+            background: white;
+            border-radius: 50%;
+            animation: sparkle 1s ease-out;
+        }
+
+        @keyframes sparkle {
+            0% { transform: scale(0); opacity: 1; }
+            100% { transform: scale(3); opacity: 0; }
         }
     </style>
 </head>
 <body>
-    <h1>🔒 Chào mừng c np đến với thể giới hacker hihi 🔓</h1>
-    <button class="hacker-button" onclick="showHackMessage(event)">nhấn vào hihi</button>
+    <h1 class="cute-hacker-title glitch-effect">🌸 Chào mừng NP đến Hack World dễ thương 🌸</h1>
+    <button class="kawaii-button" onclick="showCuteHack(event)">
+        Nhấn vào đây nè 💖
+    </button>
 
     <script>
-        function showHackMessage(event) {
-            // Hiển thị thông báo hack
-            alert("tất cả tài khaorn của c np đã bị hackk");
-            
-            // Tạo hiệu ứng matrix
-            const chars = "01";
-            const matrixEffect = document.createElement('div');
-            matrixEffect.classList.add('matrix-effect');
-            
-            // Tạo các dòng code rơi
-            for (let i = 0; i < 50; i++) {
-                const fallingText = document.createElement('div');
-                fallingText.style.position = 'fixed';
-                fallingText.style.left = Math.random() * 100 + 'vw';
-                fallingText.style.animation = `fall ${Math.random() * 3 + 2}s linear infinite`;
-                fallingText.style.color = '#0f0';
-                
-                // Tạo nội dung code giả
-                let text = '';
-                for (let j = 0; j < 50; j++) {
-                    text += chars.charAt(Math.floor(Math.random() * chars.length)) + ' ';
-                }
-                fallingText.textContent = text;
-                
-                matrixEffect.appendChild(fallingText);
+        function showCuteHack(event) {
+            // Tạo hiệu ứng sparkle
+            for(let i = 0; i < 20; i++) {
+                const sparkle = document.createElement('div');
+                sparkle.className = 'sparkle';
+                sparkle.style.left = `${event.clientX + Math.random()*30 - 15}px`;
+                sparkle.style.top = `${event.clientY + Math.random()*30 - 15}px`;
+                document.body.appendChild(sparkle);
+                setTimeout(() => sparkle.remove(), 1000);
             }
+
+            // Tạo matrix dễ thương
+            const matrix = document.createElement('div');
+            matrix.className = 'cute-matrix';
             
-            document.body.appendChild(matrixEffect);
+            // Tạo ký tự rơi
+            const chars = "❤️💖🌸🐰🎀✨💫🐾";
+            for(let i = 0; i < 30; i++) {
+                const text = document.createElement('div');
+                text.style.position = 'fixed';
+                text.style.left = Math.random() * 95 + 'vw';
+                text.style.animation = `fall ${Math.random()*3 + 2}s linear infinite`;
+                text.style.fontSize = '20px';
+                
+                let content = '';
+                for(let j = 0; j < 10; j++) {
+                    content += chars[Math.floor(Math.random()*chars.length)] + ' ';
+                }
+                text.innerHTML = content;
+                
+                matrix.appendChild(text);
+            }
+            document.body.appendChild(matrix);
             
-            // Xóa hiệu ứng sau 3 giây
+            // Hiển thị thông báo
+            const message = document.createElement('div');
+            message.style.position = 'fixed';
+            message.style.top = '50%';
+            message.style.left = '50%';
+            message.style.transform = 'translate(-50%, -50%)';
+            message.style.background = 'pink';
+            message.style.padding = '20px';
+            message.style.borderRadius = '15px';
+            message.style.boxShadow = '0 0 20px white';
+            message.innerHTML = '🎀 Oops! Tài khoản của NP đã được thêm vào collection dễ thương rồi nè 💌';
+            
+            document.body.appendChild(message);
             setTimeout(() => {
-                matrixEffect.remove();
+                matrix.remove();
+                message.remove();
             }, 3000);
         }
 
-        // Thêm animation cho hiệu ứng matrix
+        // Thêm animation cho hiệu ứng rơi
         const style = document.createElement('style');
         style.textContent = `
             @keyframes fall {
-                from { transform: translateY(-100vh); }
-                to { transform: translateY(100vh); }
+                from { transform: translateY(-100vh) rotate(0deg); }
+                to { transform: translateY(100vh) rotate(360deg); }
             }
         `;
         document.head.appendChild(style);
