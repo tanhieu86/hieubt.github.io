@@ -1,151 +1,172 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hacker Cute Hí hí</title>
-    <style>
-        body {
-            background: linear-gradient(135deg, #ffb3ba, #ffdfba);
-            text-align: center;
-            font-family: 'Comic Sans MS', 'Courier New', cursive;
-            padding: 50px;
-            color: #ff69b4;
-        }
-        
-        .cute-hacker-title {
-            text-shadow: 2px 2px #ffffff;
-            font-size: 2.5em;
-            margin-bottom: 30px;
-        }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hacker Cute Hí hí</title>
+  <style>
+    body {
+      background: linear-gradient(135deg, #ffb3ba, #ffdfba);
+      text-align: center;
+      font-family: 'Comic Sans MS', 'Courier New', cursive;
+      padding: 50px;
+      color: #ff69b4;
+    }
+    
+    .cute-hacker-title {
+      text-shadow: 2px 2px #ffffff;
+      font-size: 2.5em;
+      margin-bottom: 30px;
+    }
 
-        .kawaii-button {
-            background: #ff94c2;
-            border: none;
-            padding: 20px 40px;
-            font-size: 24px;
-            border-radius: 15px;
-            cursor: pointer;
-            transition: 0.3s;
-            position: relative;
-            box-shadow: 0 4px 15px rgba(255, 105, 180, 0.3);
-            color: white;
-            border: 3px solid white;
-        }
+    .kawaii-button {
+      background: #ff94c2;
+      border: none;
+      padding: 20px 40px;
+      font-size: 24px;
+      border-radius: 15px;
+      cursor: pointer;
+      transition: 0.3s;
+      position: relative;
+      box-shadow: 0 4px 15px rgba(255, 105, 180, 0.3);
+      color: white;
+      border: 3px solid white;
+    }
 
-        .kawaii-button:hover {
-            background: #ff6b6b;
-            transform: scale(1.05) rotate(-3deg);
-            box-shadow: 0 6px 20px rgba(255, 105, 180, 0.5);
-        }
+    .kawaii-button:hover {
+      background: #ff6b6b;
+      transform: scale(1.05) rotate(-3deg);
+      box-shadow: 0 6px 20px rgba(255, 105, 180, 0.5);
+    }
 
-        .glitch-effect {
-            animation: glitch 1s infinite;
-            text-shadow: 2px 2px #ff94c2, -2px -2px #b2ffff;
-        }
+    .glitch-effect {
+      animation: glitch 1s infinite;
+      text-shadow: 2px 2px #ff94c2, -2px -2px #b2ffff;
+    }
 
-        @keyframes glitch {
-            0% { transform: translate(0); }
-            20% { transform: translate(-2px, 2px); }
-            40% { transform: translate(-2px, -2px); }
-            60% { transform: translate(2px, 2px); }
-            80% { transform: translate(2px, -2px); }
-            100% { transform: translate(0); }
-        }
+    @keyframes glitch {
+      0% { transform: translate(0); }
+      20% { transform: translate(-2px, 2px); }
+      40% { transform: translate(-2px, -2px); }
+      60% { transform: translate(2px, 2px); }
+      80% { transform: translate(2px, -2px); }
+      100% { transform: translate(0); }
+    }
 
-        .cute-matrix {
-            position: fixed;
-            top: 0;
-            left: 0;
-            pointer-events: none;
-            z-index: -1;
-            opacity: 0.3;
-        }
+    .cute-matrix {
+      position: fixed;
+      top: 0;
+      left: 0;
+      pointer-events: none;
+      z-index: -1;
+      opacity: 0.3;
+    }
 
-        .sparkle {
-            position: absolute;
-            width: 8px;
-            height: 8px;
-            background: white;
-            border-radius: 50%;
-            animation: sparkle 1s ease-out;
-        }
+    .sparkle {
+      position: absolute;
+      width: 8px;
+      height: 8px;
+      background: white;
+      border-radius: 50%;
+      animation: sparkle 1s ease-out;
+    }
 
-        @keyframes sparkle {
-            0% { transform: scale(0); opacity: 1; }
-            100% { transform: scale(3); opacity: 0; }
-        }
-    </style>
+    @keyframes sparkle {
+      0% { transform: scale(0); opacity: 1; }
+      100% { transform: scale(3); opacity: 0; }
+    }
+
+    /* Thêm hiệu ứng pulse cho thông báo */
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.1); }
+      100% { transform: scale(1); }
+    }
+  </style>
 </head>
 <body>
-    <h1 class="cute-hacker-title glitch-effect">🌸 Chào mừng NP đến Hack World dễ thương 🌸</h1>
-    <button class="kawaii-button" onclick="showCuteHack(event)">
-        Nhấn vào đây nè 💖
-    </button>
+  <h1 class="cute-hacker-title glitch-effect">🌸 Chào mừng NP đến Hack World dễ thương 🌸</h1>
+  <button class="kawaii-button" onclick="showCuteHack(event)">
+    Nhấn vào đây nè 💖
+  </button>
 
-    <script>
-        function showCuteHack(event) {
-            // Tạo hiệu ứng sparkle
-            for(let i = 0; i < 20; i++) {
-                const sparkle = document.createElement('div');
-                sparkle.className = 'sparkle';
-                sparkle.style.left = `${event.clientX + Math.random()*30 - 15}px`;
-                sparkle.style.top = `${event.clientY + Math.random()*30 - 15}px`;
-                document.body.appendChild(sparkle);
-                setTimeout(() => sparkle.remove(), 1000);
-            }
+  <script>
+    function showCuteHack(event) {
+      // Hiệu ứng flash nền
+      const flash = document.createElement('div');
+      flash.style.position = 'fixed';
+      flash.style.top = 0;
+      flash.style.left = 0;
+      flash.style.width = '100%';
+      flash.style.height = '100%';
+      flash.style.backgroundColor = 'white';
+      flash.style.opacity = 0.5;
+      flash.style.zIndex = 100;
+      document.body.appendChild(flash);
+      setTimeout(() => flash.remove(), 300);
 
-            // Tạo matrix dễ thương
-            const matrix = document.createElement('div');
-            matrix.className = 'cute-matrix';
-            
-            // Tạo ký tự rơi
-            const chars = "❤️💖🌸🐰🎀✨💫🐾";
-            for(let i = 0; i < 30; i++) {
-                const text = document.createElement('div');
-                text.style.position = 'fixed';
-                text.style.left = Math.random() * 95 + 'vw';
-                text.style.animation = `fall ${Math.random()*3 + 2}s linear infinite`;
-                text.style.fontSize = '20px';
-                
-                let content = '';
-                for(let j = 0; j < 10; j++) {
-                    content += chars[Math.floor(Math.random()*chars.length)] + ' ';
-                }
-                text.innerHTML = content;
-                
-                matrix.appendChild(text);
-            }
-            document.body.appendChild(matrix);
-            
-            // Hiển thị thông báo
-            const message = document.createElement('div');
-            message.style.position = 'fixed';
-            message.style.top = '50%';
-            message.style.left = '50%';
-            message.style.transform = 'translate(-50%, -50%)';
-            message.style.background = 'pink';
-            message.style.padding = '20px';
-            message.style.borderRadius = '15px';
-            message.style.boxShadow = '0 0 20px white';
-            message.innerHTML = '🎀 Oops! Tài khoản của NP đã được thêm vào collection dễ thương rồi nè 💌';
-            
-            document.body.appendChild(message);
-            setTimeout(() => {
-                matrix.remove();
-                message.remove();
-            }, 3000);
+      // Tạo hiệu ứng sparkle (tăng số lượng từ 20 lên 50)
+      for (let i = 0; i < 50; i++) {
+        const sparkle = document.createElement('div');
+        sparkle.className = 'sparkle';
+        sparkle.style.left = `${event.clientX + Math.random() * 30 - 15}px`;
+        sparkle.style.top = `${event.clientY + Math.random() * 30 - 15}px`;
+        document.body.appendChild(sparkle);
+        setTimeout(() => sparkle.remove(), 1000);
+      }
+
+      // Tạo matrix dễ thương (tăng số lượng ký tự rơi từ 30 lên 50)
+      const matrix = document.createElement('div');
+      matrix.className = 'cute-matrix';
+
+      // Tạo ký tự rơi
+      const chars = "❤️💖🌸🐰🎀✨💫🐾";
+      for (let i = 0; i < 50; i++) {
+        const text = document.createElement('div');
+        text.style.position = 'fixed';
+        text.style.left = Math.random() * 95 + 'vw';
+        text.style.animation = `fall ${Math.random() * 3 + 2}s linear infinite`;
+        text.style.fontSize = '20px';
+
+        let content = '';
+        for (let j = 0; j < 10; j++) {
+          content += chars[Math.floor(Math.random() * chars.length)] + ' ';
         }
+        text.innerHTML = content;
 
-        // Thêm animation cho hiệu ứng rơi
-        const style = document.createElement('style');
-        style.textContent = `
-            @keyframes fall {
-                from { transform: translateY(-100vh) rotate(0deg); }
-                to { transform: translateY(100vh) rotate(360deg); }
-            }
-        `;
-        document.head.appendChild(style);
-    </script>
+        matrix.appendChild(text);
+      }
+      document.body.appendChild(matrix);
+
+      // Hiển thị thông báo với nội dung mới và hiệu ứng pulse
+      const message = document.createElement('div');
+      message.style.position = 'fixed';
+      message.style.top = '50%';
+      message.style.left = '50%';
+      message.style.transform = 'translate(-50%, -50%)';
+      message.style.background = 'pink';
+      message.style.padding = '20px';
+      message.style.borderRadius = '15px';
+      message.style.boxShadow = '0 0 20px white';
+      message.style.animation = 'pulse 1s infinite';
+      message.innerHTML = '🎀 Oops! Tất cả tài khoản trên máy c np cute đã bị lấy hacked by tanhieubui';
+
+      document.body.appendChild(message);
+      setTimeout(() => {
+        matrix.remove();
+        message.remove();
+      }, 3000);
+    }
+
+    // Thêm animation cho hiệu ứng rơi
+    const style = document.createElement('style');
+    style.textContent = `
+      @keyframes fall {
+        from { transform: translateY(-100vh) rotate(0deg); }
+        to { transform: translateY(100vh) rotate(360deg); }
+      }
+    `;
+    document.head.appendChild(style);
+  </script>
 </body>
 </html>
