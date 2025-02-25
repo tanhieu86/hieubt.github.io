@@ -3,76 +3,91 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Web Cute Hiệu Ứng</title>
+    <title>Web Hacker Hihi</title>
     <style>
         body {
-            background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+            background: linear-gradient(135deg, #2b2b2b, #1a1a1a);
             text-align: center;
-            font-family: 'Comic Sans MS', cursive;
+            font-family: 'Courier New', monospace;
             padding: 50px;
+            color: #0f0;
         }
-        .cute-button {
-            background: pink;
+        .hacker-button {
+            background: #00ff00;
             border: none;
             padding: 15px 30px;
             font-size: 20px;
-            border-radius: 20px;
+            border-radius: 5px;
             cursor: pointer;
             transition: 0.3s;
             position: relative;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 0 10px #0f0;
+            color: #000;
+            font-weight: bold;
         }
-        .cute-button:hover {
-            background: #ff6b81;
+        .hacker-button:hover {
+            background: #ff0000;
+            box-shadow: 0 0 20px #f00;
             transform: scale(1.1);
-            animation: shake 0.3s ease-in-out;
         }
-        @keyframes shake {
-            0% { transform: translateX(0); }
-            25% { transform: translateX(-5px); }
-            50% { transform: translateX(5px); }
-            75% { transform: translateX(-5px); }
-            100% { transform: translateX(0); }
-        }
-        .sparkle {
-            position: absolute;
-            width: 10px;
-            height: 10px;
-            background: white;
-            border-radius: 50%;
-            opacity: 0.8;
-            animation: sparkleAnim 0.6s linear;
-        }
-        @keyframes sparkleAnim {
-            from {
-                transform: scale(1);
-                opacity: 1;
-            }
-            to {
-                transform: scale(2);
-                opacity: 0;
-            }
+        .matrix-effect {
+            position: fixed;
+            top: 0;
+            left: 0;
+            pointer-events: none;
+            z-index: -1;
         }
     </style>
 </head>
 <body>
-    <h1>✨ Chào mừng bạn đến với Web Cute ✨</h1>
-    <button class="cute-button" onclick="addSparkle(event)">Nhấn vào em 💖</button>
+    <h1>🔒 Chào mừng c np đến với thể giới hacker hihi 🔓</h1>
+    <button class="hacker-button" onclick="showHackMessage(event)">nhấn vào hihi</button>
+
     <script>
-        function addSparkle(event) {
-            const sparkle = document.createElement('div');
-            sparkle.classList.add('sparkle');
-            document.body.appendChild(sparkle);
+        function showHackMessage(event) {
+            // Hiển thị thông báo hack
+            alert("tất cả tài khaorn của c np đã bị hackk");
             
-            const x = event.clientX;
-            const y = event.clientY;
-            sparkle.style.left = `${x}px`;
-            sparkle.style.top = `${y}px`;
+            // Tạo hiệu ứng matrix
+            const chars = "01";
+            const matrixEffect = document.createElement('div');
+            matrixEffect.classList.add('matrix-effect');
             
+            // Tạo các dòng code rơi
+            for (let i = 0; i < 50; i++) {
+                const fallingText = document.createElement('div');
+                fallingText.style.position = 'fixed';
+                fallingText.style.left = Math.random() * 100 + 'vw';
+                fallingText.style.animation = `fall ${Math.random() * 3 + 2}s linear infinite`;
+                fallingText.style.color = '#0f0';
+                
+                // Tạo nội dung code giả
+                let text = '';
+                for (let j = 0; j < 50; j++) {
+                    text += chars.charAt(Math.floor(Math.random() * chars.length)) + ' ';
+                }
+                fallingText.textContent = text;
+                
+                matrixEffect.appendChild(fallingText);
+            }
+            
+            document.body.appendChild(matrixEffect);
+            
+            // Xóa hiệu ứng sau 3 giây
             setTimeout(() => {
-                sparkle.remove();
-            }, 600);
+                matrixEffect.remove();
+            }, 3000);
         }
+
+        // Thêm animation cho hiệu ứng matrix
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes fall {
+                from { transform: translateY(-100vh); }
+                to { transform: translateY(100vh); }
+            }
+        `;
+        document.head.appendChild(style);
     </script>
 </body>
 </html>
